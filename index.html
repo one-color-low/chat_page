@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <style>
+    body {
+      font-family: "Helvetica Neue", helvetica, arial;
+      padding: 15px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul li {
+      line-height: 1.4;
+    }
+  </style>
+
+  <script>
+    function send() {
+      ws.send(document.getElementById('msg').value);
+    }
+
+    var host = 'ws://arcane-peak-27134.herokuapp.com/'
+    var ws = new WebSocket(host);
+
+    ws.onmessage = function (event) {
+      document.getElementById("messages").innerHTML += "<div>" + JSON.parse(event.data) + "</div>";
+      console.log(JSON.parse(event.data));
+    };
+
+  </script>
+</head>
+
+<body>
+  <input type="text" id="msg" />
+  <input type="button" value="send" onclick="send()" />
+  <h1>Messages</h1>
+  <div id="messages"/>
+</body>
+
+</html>
