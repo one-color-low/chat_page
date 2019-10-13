@@ -23,7 +23,7 @@
       ws.send(document.getElementById('msg').value);
     }
 
-    var host = 'ws://arcane-peak-27134.herokuapp.com/'
+    var host = 'wss://arcane-peak-27134.herokuapp.com/'
     var ws = new WebSocket(host);
 
     ws.onmessage = function (event) {
